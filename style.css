@@ -194,3 +194,8 @@ header.sc .bar{height:54px}
 .pprice{font-size:17px}
 .dt-price{font-size:30px;font-weight:500}
 .pprice small,.dt-price small{font-size:.55em;font-weight:400;letter-spacing:.2em;color:var(--mute)}
+
+/* ===== single collection on page ===== */
+.pgrid.shop{padding-top:6px}
+.pgrid.shop .pc{animation:cardIn .7s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i,0)*70ms)}
+         
