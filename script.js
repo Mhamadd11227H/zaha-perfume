@@ -1,14 +1,14 @@
 (function(){
- var ku=false,btn=document.getElementById('lang'),ov=document.getElementById('ov'),grid=document.getElementById('pgrid'),
+ var ku=false,ov=document.getElementById('ov'),grid=document.getElementById('pgrid'),
      dt=document.getElementById('dt'),dtBody=document.getElementById('dtBody'),curCat=null,curP=null;
  var T={
-  men:{en:"Men’s Perfumes",ku:"عطرێن پیاوان"},women:{en:"Women’s Perfumes",ku:"عطرێن ئافرەتان"},
-  ask:{en:"Ask for price",ku:"نرخ ب پەیوەندیێ"},order:{en:"Order on WhatsApp",ku:"ل واتسئاپێ داخواز بکە"},
-  items:{en:"perfumes",ku:"عطر"},none:{en:"Perfumes coming soon ♡",ku:"عطر دێ زوی بهێنە دانان ♡"},
-  sold:{en:"Sold out",ku:"تەمام بوو"},soldBtn:{en:"Currently unavailable",ku:"ئێستا بەردەست نینە"},
-  avail:{en:"In stock",ku:"بەردەستە"},notes:{en:"Notes",ku:"بۆن"},about:{en:"About this perfume",ku:"دەربارەی ئەڤ عطرە"}
+  men:{en:"Men’s Perfumes"},women:{en:"Women’s Perfumes"},
+  ask:{en:"Ask for price"},order:{en:"Order on WhatsApp"},
+  items:{en:"perfumes"},none:{en:"Perfumes coming soon ♡"},
+  sold:{en:"Sold out"},soldBtn:{en:"Currently unavailable"},
+  avail:{en:"In stock"},notes:{en:"Notes"},about:{en:"About this perfume"}
  };
- var L=function(k){return T[k][ku?'ku':'en']};
+ var L=function(k){return T[k].en};
  var BT='<svg class="ph" viewBox="0 0 80 110" fill="none" stroke="currentColor" stroke-width="2"><rect x="32" y="4" width="16" height="12" rx="2" fill="currentColor"/><rect x="10" y="24" width="60" height="80" rx="6"/><path d="M22 40h36L22 90h36" stroke-width="3"/></svg>';
  var LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
  var WA='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>';
@@ -22,11 +22,11 @@
   var i=document.createElement('img');i.alt=name||'';i.loading='lazy';i.onerror=ph;i.src=src;box.insertAdjacentElement('afterbegin',i);
  }
  function msg(p){
-  var lines=['سڵاو 🌿','دڤێت ڤی عطری ژ ماڵپەڕێ ZAHA داخواز بکەم:','','• ناڤ: '+p.name];
-  if(p.brand)lines.push('• براند: '+p.brand);
-  if(p.size)lines.push('• قەبارە: '+p.size);
-  lines.push('• نرخ: '+(p.price||'ب پەیوەندیێ'));
-  lines.push('• بەش: '+T[p.cat].ku);
+  var lines=['Hello 🌿','I would like to order this perfume from the ZAHA website:','','• Name: '+p.name];
+  if(p.brand)lines.push('• Brand: '+p.brand);
+  if(p.size)lines.push('• Size: '+p.size);
+  lines.push('• Price: '+(p.price||'Please confirm'));
+  lines.push('• Section: '+T[p.cat].en);
   return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(lines.join('\n'));
  }
  function card(p){
@@ -57,7 +57,7 @@
   if(p.brand)inn.appendChild(mk('div','pbrand',p.brand));
   inn.appendChild(mk('h3','',p.name));
   var meta=mk('div','meta');
-  meta.appendChild(mk('span','',T[p.cat][ku?'ku':'en']));
+  meta.appendChild(mk('span','',T[p.cat].en));
   if(p.size)meta.appendChild(mk('span','',p.size));
   meta.appendChild(mk('span',inStock(p)?'ok':'no',inStock(p)?L('avail'):L('sold')));
   inn.appendChild(meta);
@@ -99,10 +99,6 @@
  document.getElementById('dtX').onclick=closeDetail;
  dt.onclick=function(e){if(e.target===dt)closeDetail()};
  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(dt.classList.contains('on'))closeDetail();else closeOv()}});
- btn.onclick=function(){ku=!ku;
-  document.documentElement.lang=ku?'ku':'en';document.documentElement.dir=ku?'rtl':'ltr';
-  document.querySelectorAll('[data-en]').forEach(function(e){e.textContent=e.getAttribute(ku?'data-ku':'data-en')});
-  btn.textContent=ku?'English':'کوردی';counts();render();featured();renderDetail();};
  counts();featured();
  /* stagger reveal */
  document.querySelectorAll('.rv').forEach(function(e){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.transitionDelay=(Math.min(i,5)*90)+'ms'});
