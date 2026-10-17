@@ -18,7 +18,8 @@
  function pic(box,src,name){
   box.querySelectorAll('img,svg.ph').forEach(function(x){x.remove()});
   function ph(){box.querySelectorAll('img').forEach(function(x){x.remove()});if(!box.querySelector('svg.ph'))box.insertAdjacentHTML('afterbegin',BT)}
-  if(!src){ph();return}
+  if(!src){box.style.setProperty('--bgimg','none');ph();return}
+  box.style.setProperty('--bgimg','url("'+src+'")');
   var i=document.createElement('img');i.alt=name||'';i.loading='lazy';i.onerror=ph;i.src=src;box.insertAdjacentElement('afterbegin',i);
  }
  function msg(p){
@@ -29,6 +30,7 @@
   lines.push('• Section: '+T[p.cat].en);
   return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(lines.join('\n'));
  }
+ function pr(c,p){var e=mk('div',c);if(!p.price){e.textContent=L('ask');return e}var m=String(p.price).match(/^(.*?)\s*(IQD)$/i);if(m){e.appendChild(document.createTextNode(m[1]));e.appendChild(mk('small','',m[2].toUpperCase()))}else e.textContent=p.price;return e}
  function card(p){
   var b=mk('button','pc'+(inStock(p)?'':' sold'));b.type='button';
   var im=mk('div','pimg');pic(im,imgs(p)[0],p.name);
@@ -37,7 +39,7 @@
   var f=mk('div','pinfo');
   if(p.brand)f.appendChild(mk('div','pbrand',p.brand));
   f.appendChild(mk('div','pname',p.name));
-  f.appendChild(mk('div','pprice',p.price||L('ask')));
+  f.appendChild(pr('pprice',p));
   b.append(im,f);b.onclick=function(){openDetail(p)};return b;
  }
  function renderDetail(){
@@ -61,7 +63,7 @@
   if(p.size)meta.appendChild(mk('span','',p.size));
   meta.appendChild(mk('span',inStock(p)?'ok':'no',inStock(p)?L('avail'):L('sold')));
   inn.appendChild(meta);
-  inn.appendChild(mk('div','dt-price',p.price||L('ask')));
+  inn.appendChild(pr('dt-price',p));
   if(p.desc){inn.appendChild(mk('div','dt-h',L('about')));inn.appendChild(mk('p','dt-desc',p.desc))}
   if(p.notes&&p.notes.length){inn.appendChild(mk('div','dt-h',L('notes')));var n=mk('div','notes');p.notes.forEach(function(x){n.appendChild(mk('span','',x))});inn.appendChild(n)}
   dtBody.appendChild(inn);

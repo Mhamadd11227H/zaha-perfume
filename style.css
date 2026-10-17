@@ -182,3 +182,15 @@ header.sc .bar{height:54px}
 .lock svg{animation:bob 3s ease-in-out infinite}
 .step b{transition:.4s}.step:hover b{transform:rotate(360deg) scale(1.1)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}.splash{display:none}}
+
+/* ===== full photo display (no cropping) ===== */
+.pimg{aspect-ratio:3/4}
+.pimg::before,.dt-img::before{content:"";position:absolute;inset:-24px;background:var(--bgimg,none) center/cover no-repeat;filter:blur(26px) brightness(.72) saturate(1.1);transform:scale(1.1)}
+.pimg img,.dt-img img{position:relative;object-fit:contain!important}
+.dt-img{aspect-ratio:4/5}
+
+/* ===== price style ===== */
+.pprice,.dt-price{font-family:Inter,system-ui,sans-serif;font-weight:500;font-variant-numeric:lining-nums tabular-nums;letter-spacing:.03em;color:var(--gold);display:flex;align-items:baseline;gap:6px}
+.pprice{font-size:17px}
+.dt-price{font-size:30px;font-weight:500}
+.pprice small,.dt-price small{font-size:.55em;font-weight:400;letter-spacing:.2em;color:var(--mute)}
