@@ -1,5 +1,5 @@
 (function(){
- var ku=false,ov=document.getElementById('ov'),grid=document.getElementById('pgrid'),
+ var ku=false,grid=document.getElementById('shop'),
      dt=document.getElementById('dt'),dtBody=document.getElementById('dtBody'),curCat=null,curP=null;
  var T={
   men:{en:"Men’s Perfumes"},women:{en:"Women’s Perfumes"},
@@ -27,7 +27,6 @@
   if(p.brand)lines.push('• Brand: '+p.brand);
   if(p.size)lines.push('• Size: '+p.size);
   lines.push('• Price: '+(p.price||'Please confirm'));
-  lines.push('• Section: '+T[p.cat].en);
   return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(lines.join('\n'));
  }
  function pr(c,p){var e=mk('div',c);if(!p.price){e.textContent=L('ask');return e}var m=String(p.price).match(/^(.*?)\s*(IQD)$/i);if(m){e.appendChild(document.createTextNode(m[1]));e.appendChild(mk('small','',m[2].toUpperCase()))}else e.textContent=p.price;return e}
@@ -59,7 +58,6 @@
   if(p.brand)inn.appendChild(mk('div','pbrand',p.brand));
   inn.appendChild(mk('h3','',p.name));
   var meta=mk('div','meta');
-  meta.appendChild(mk('span','',T[p.cat].en));
   if(p.size)meta.appendChild(mk('span','',p.size));
   meta.appendChild(mk('span',inStock(p)?'ok':'no',inStock(p)?L('avail'):L('sold')));
   inn.appendChild(meta);
@@ -73,35 +71,16 @@
   dtBody.appendChild(o);
  }
  function openDetail(p){curP=p;renderDetail();dt.classList.add('on');dt.setAttribute('aria-hidden','false');dt.firstElementChild.scrollTop=0;document.body.style.overflow='hidden'}
- function closeDetail(){dt.classList.remove('on');dt.setAttribute('aria-hidden','true');curP=null;document.body.style.overflow=curCat?'hidden':''}
+ function closeDetail(){dt.classList.remove('on');dt.setAttribute('aria-hidden','true');curP=null;document.body.style.overflow=''}
  function render(){
-  if(!curCat)return;
-  document.getElementById('ovTitle').textContent=L(curCat);
   grid.replaceChildren();
-  var list=PRODUCTS.filter(function(p){return p.cat===curCat});
-  if(!list.length)grid.appendChild(mk('div','empty',L('none')));
-  list.forEach(function(p,i){var c=card(p);c.style.setProperty('--i',i);grid.appendChild(c)});
+  if(!PRODUCTS.length)grid.appendChild(mk('div','empty',L('none')));
+  PRODUCTS.forEach(function(p,i){var c=card(p);c.style.setProperty('--i',i);grid.appendChild(c)});
  }
- function featured(){
-  var s=document.getElementById('fstrip'),sec=document.getElementById('featSec');
-  s.replaceChildren();var list=PRODUCTS.filter(function(p){return p.featured});
-  sec.classList.toggle('hide',!list.length);
-  list.forEach(function(p){s.appendChild(card(p))});
- }
- function counts(){
-  document.querySelectorAll('.cat').forEach(function(b){
-   var n=PRODUCTS.filter(function(p){return p.cat===b.dataset.cat}).length;
-   b.querySelector('.count').textContent=n+' '+L('items');
-  });
- }
- function openCat(k){curCat=k;render();ov.classList.add('on');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;document.body.style.overflow='hidden'}
- function closeOv(){ov.classList.remove('on');ov.setAttribute('aria-hidden','true');curCat=null;document.body.style.overflow=''}
- document.querySelectorAll('.cat').forEach(function(b){b.onclick=function(){openCat(b.dataset.cat)}});
- document.getElementById('ovBack').onclick=closeOv;
  document.getElementById('dtX').onclick=closeDetail;
  dt.onclick=function(e){if(e.target===dt)closeDetail()};
- document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(dt.classList.contains('on'))closeDetail();else closeOv()}});
- counts();featured();
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(dt.classList.contains('on'))closeDetail()}});
+ render();
  /* stagger reveal */
  document.querySelectorAll('.rv').forEach(function(e){var i=Array.prototype.indexOf.call(e.parentNode.children,e);e.style.transitionDelay=(Math.min(i,5)*90)+'ms'});
  /* gold dust in hero */
