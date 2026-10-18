@@ -27,6 +27,10 @@ const WHATSAPP = "9647509316163";
 
 const PRICE = "30,000 IQD";
 const PRICE2 = "45,000 IQD";
+const PRICE3 = "25,000 IQD";
+const PRICE4 = "35,000 IQD";
+const PRICE5 = "40,000 IQD";
+const PRICE6 = "42,000 IQD";
 
 /* هەر عطرەک ب ناڤێ خۆ ل ژێر سەرنڤیسەکێ دیارە.
    بۆ سڕینا عطرەکێ: ژ خەتا «// ✂ ... START» هەتا «// ✂ ... END» هەمووی بسڕەوە،
@@ -116,7 +120,92 @@ const PRODUCTS = [
 
   // ✂ MALIKAT AL RIMAL MAJESTY (Rimal Al Khaleej) — START
   {cat:"women", name:"Malikat Al Rimal Majesty | ملكة الرمال", brand:"Rimal Al Khaleej", size:"100ml", price:PRICE2,
-   desc:"", notes:[], img:"images/malikat-al-rimal-majesty.jpg", imgs:[], tag:"", featured:false, stock:true}
+   desc:"", notes:[], img:"images/malikat-al-rimal-majesty.jpg", imgs:[], tag:"", featured:false, stock:true},
   // ✂ MALIKAT AL RIMAL MAJESTY (Rimal Al Khaleej) — END
+
+  // ✂ LAMSAT HARIR (Arabiyat) — START
+  {cat:"women", name:"Lamsat Harir | لمسة حرير", brand:"Arabiyat", size:"100ml", price:PRICE3,
+   desc:"Comes with a free deodorant.", notes:[], img:"images/lamsat-harir.jpg", imgs:[], tag:"Free deo", featured:false, stock:true},
+  // ✂ LAMSAT HARIR (Arabiyat) — END
+
+  // ✂ AL FARIS (Arabiyat) — START
+  {cat:"men", name:"Al Faris | الفارس", brand:"Arabiyat", size:"100ml", price:PRICE3,
+   desc:"Comes with a free deodorant.", notes:[], img:"images/al-faris.jpg", imgs:[], tag:"Free deo", featured:false, stock:true},
+  // ✂ AL FARIS (Arabiyat) — END
+
+  // ✂ OUD AL LAYL — START
+  {cat:"men", name:"Oud Al Layl | عود الليل", brand:"", size:"100ml", price:PRICE3,
+   desc:"Comes with a free deodorant.", notes:["Oud"], img:"images/oud-al-layl.jpg", imgs:[], tag:"Free deo", featured:false, stock:true},
+  // ✂ OUD AL LAYL — END
+
+  // ✂ AVANTI (Mesk Al Abeer) — START
+  {cat:"women", name:"Avanti", brand:"Mesk Al Abeer", size:"100ml", price:PRICE4,
+   desc:"", notes:[], img:"images/avanti.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ AVANTI (Mesk Al Abeer) — END
+
+  // ✂ EUROPA (MPF) — START
+  {cat:"women", name:"Europa", brand:"MPF", size:"100ml", price:PRICE4,
+   desc:"", notes:[], img:"images/europa.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ EUROPA (MPF) — END
+
+  // ✂ ROSE VANLINE (Dar Al-Misk) — START
+  {cat:"women", name:"Rose Vanline", brand:"Dar Al-Misk", size:"100ml", price:PRICE4,
+   desc:"", notes:[], img:"images/rose-vanline.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ ROSE VANLINE (Dar Al-Misk) — END
+
+  // ✂ ONLY PURPLE — START
+  {cat:"women", name:"Only Purple", brand:"", size:"100ml", price:PRICE4,
+   desc:"", notes:[], img:"images/only-purple.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ ONLY PURPLE — END
+
+  // ✂ ONLY PINK — START
+  {cat:"women", name:"Only Pink", brand:"", size:"100ml", price:PRICE4,
+   desc:"", notes:[], img:"images/only-pink.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ ONLY PINK — END
+
+  // ✂ NOW (Rave) — START
+  {cat:"men", name:"Now", brand:"Rave", size:"", price:PRICE4,
+   desc:"", notes:[], img:"images/now-rave.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ NOW (Rave) — END
+
+  // ✂ AQUA PURA — START
+  {cat:"men", name:"Aqua Pura", brand:"", size:"70ml", price:PRICE4,
+   desc:"", notes:[], img:"images/aqua-pura.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ AQUA PURA — END
+
+  // ✂ ROOH DUBAI (Mesk Al Abeer) — START
+  {cat:"men", name:"Rooh Dubai | روح دبي", brand:"Mesk Al Abeer", size:"", price:PRICE5,
+   desc:"", notes:[], img:"images/rooh-dubai.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ ROOH DUBAI (Mesk Al Abeer) — END
+
+  // ✂ ROSE PARIS (Rimal Al Khaleej) — START
+  {cat:"women", name:"Rose Paris | روز باريس", brand:"Rimal Al Khaleej", size:"100ml", price:PRICE5,
+   desc:"", notes:["Rose"], img:"images/rose-paris.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ ROSE PARIS (Rimal Al Khaleej) — END
+
+  // ✂ LAIL MALAKI INTENSE — START
+  {cat:"men", name:"Lail Malaki Intense | ليل ملكي", brand:"", size:"100ml", price:PRICE5,
+   desc:"", notes:[], img:"images/lail-malaki-intense.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ LAIL MALAKI INTENSE — END
+
+  // ✂ VICTORIA VELVET BLACK (Mesk Al Khaleej) — START
+  {cat:"women", name:"Victoria Velvet Black | فيكتوريا", brand:"Mesk Al Khaleej", size:"100ml", price:PRICE5,
+   desc:"", notes:[], img:"images/victoria-velvet-black.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ VICTORIA VELVET BLACK (Mesk Al Khaleej) — END
+
+  // ✂ JEAN LOWE VERDE AURA (Maison Alhambra) — START
+  {cat:"men", name:"Jean Lowe Verde Aura", brand:"Maison Alhambra", size:"100ml", price:PRICE6,
+   desc:"", notes:[], img:"images/jean-lowe-verde-aura.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ JEAN LOWE VERDE AURA (Maison Alhambra) — END
+
+  // ✂ JEAN LOWE SUMMER VIBES (Maison Alhambra) — START
+  {cat:"men", name:"Jean Lowe Summer Vibes", brand:"Maison Alhambra", size:"100ml", price:PRICE6,
+   desc:"", notes:[], img:"images/jean-lowe-summer-vibes.jpg", imgs:[], tag:"", featured:false, stock:true},
+  // ✂ JEAN LOWE SUMMER VIBES (Maison Alhambra) — END
+
+  // ✂ JEAN LOWE FANTASME (Maison Alhambra) — START
+  {cat:"men", name:"Jean Lowe Fantasme", brand:"Maison Alhambra", size:"100ml", price:PRICE6,
+   desc:"", notes:[], img:"images/jean-lowe-fantasme.jpg", imgs:[], tag:"", featured:false, stock:true}
+  // ✂ JEAN LOWE FANTASME (Maison Alhambra) — END
 
 ];
